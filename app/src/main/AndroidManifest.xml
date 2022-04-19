@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lab.uro.kitori.samplemultimodule">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".SampleMultiModuleApplication"
         android:allowBackup="true"
@@ -11,5 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SampleMultiModule">
 
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".presentation.list.ListActivity" />
+        <activity android:name=".presentation.detail.DetailActivity" />
     </application>
 </manifest>

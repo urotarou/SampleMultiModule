@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="list_title">リスト画面</string>
+    <string name="list_empty_message">項目は0件です</string>
+    <string name="list_error_message">エラーが発生しました</string>
+</resources>

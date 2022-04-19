@@ -15,3 +15,18 @@ dependencyResolutionManagement {
 rootProject.name = "SampleMultiModule"
 
 include ':app'
+include ':router'
+
+include ':presentation:common'
+include ':presentation:ui'
+include ':presentation:feature:list'
+include ':presentation:feature:detail'
+
+include ':domain:common'
+include ':domain:model'
+include ':domain:usecase'
+
+include ':data:common'
+include ':data:entity'
+include ':data:remote'
+include ':data:repository'
