@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import lab.uro.kitori.samplemultimodule.domain.usecase.GitHubUseCase
+import lab.uro.kitori.samplemultimodule.domain.usecase.IGitHubUseCase
 import lab.uro.kitori.samplemultimodule.presentation.detail.item.DetailScreenItem
 import lab.uro.kitori.samplemultimodule.presentation.ui.data.ScreenState
 import javax.inject.Inject
@@ -15,7 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailViewModel @Inject constructor(
     private val app: Application,
-    private val useCase: GitHubUseCase
+    private val useCase: IGitHubUseCase
 ) : AndroidViewModel(app) {
     private val _state = MutableLiveData<ScreenState>(ScreenState.Init)
     val state: LiveData<ScreenState> = _state

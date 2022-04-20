@@ -5,15 +5,20 @@ import lab.uro.kitori.samplemultimodule.data.entity.UserEntity
 import lab.uro.kitori.samplemultimodule.data.remote.api.GitHubApi
 import javax.inject.Inject
 
+interface IGitHubRepository {
+    suspend fun getUsers(): List<UserEntity>
+    suspend fun getUser(name: String): UserEntity
+}
+
 class GitHubRepository @Inject constructor(
     private val api: GitHubApi
-) {
-    suspend fun getUsers() = api.getUsers().map { urlEntity ->
+) : IGitHubRepository {
+    override suspend fun getUsers(): List<UserEntity> = api.getUsers().map { urlEntity ->
         val name = Uri.parse(urlEntity.url).lastPathSegment ?: ""
         UserEntity(name, urlEntity.url)
     }
 
-    suspend fun getUser(name: String) = api.getUser(name).let {
+    override suspend fun getUser(name: String): UserEntity = api.getUser(name).let {
         UserEntity(it.name, it.url)
     }
 }

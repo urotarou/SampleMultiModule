@@ -10,7 +10,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-abstract class AppModule {
+abstract class AppModuleBinder {
     @Singleton
     @Binds
     abstract fun provideRouter(

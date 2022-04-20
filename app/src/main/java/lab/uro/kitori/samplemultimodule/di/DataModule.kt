@@ -1,6 +1,7 @@
 package lab.uro.kitori.samplemultimodule.di
 
 import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFactory
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -8,6 +9,8 @@ import dagger.hilt.components.SingletonComponent
 import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import lab.uro.kitori.samplemultimodule.data.remote.api.GitHubApi
+import lab.uro.kitori.samplemultimodule.data.repository.GitHubRepository
+import lab.uro.kitori.samplemultimodule.data.repository.IGitHubRepository
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,7 +20,16 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class DataModule {
+abstract class DataModuleBinder {
+    @Binds
+    abstract fun bindGitHubRepository(
+        repository: GitHubRepository
+    ): IGitHubRepository
+}
+
+@Module
+@InstallIn(SingletonComponent::class)
+class DataModuleProvider {
     @Singleton
     @Provides
     fun provideOkHttpClient(): OkHttpClient = OkHttpClient.Builder().apply {
